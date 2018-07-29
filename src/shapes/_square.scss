@@ -1,0 +1,40 @@
+/// ----------------------------------------------------------------------
+
+/// Square
+
+/// ----------------------------------------------------------------------
+
+$square: (
+  display: block
+);
+
+///
+/// Generate a square
+///
+/// @param {Number} $size
+/// The width and height
+///
+/// @param {Object} $swatch
+/// The swatch map containing style properties
+///
+/// @param {Boolean} $interactive
+/// Whether to generate states for the element (hover, active etc)
+///
+@mixin square(
+  $variant,
+  $size: null,
+  $font-size: null,
+  $swatch: null,
+  $custom: null,
+  $interactive: false
+) {
+  width: $size;
+  height: $size;
+  font-size: $font-size;
+
+  @if $interactive {
+    @include interactive($swatch, $custom);
+  }
+
+  @include apply-props(props($square, $swatch, $custom, $variant));
+}

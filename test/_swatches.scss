@@ -1,0 +1,93 @@
+/// ----------------------------------------------------------------------
+
+/// Swatches
+
+/// ----------------------------------------------------------------------
+
+$primary: #ff0000;
+$secondary: #2e14c4;
+
+$ui-a: #FFF;
+$ui-b: #777;
+$ui-c: #444;
+$ui-d: #101010;
+$ui-e: #000;
+
+$swatches: (
+  'a': (
+    background: radial-gradient(ellipse at center, $ui-d 0%, $ui-e 100%),
+    color: $ui-a
+  ),
+  'b': (
+    background-color: $ui-d,
+    color: $ui-b,
+    
+    'hover': (
+      color: $ui-a
+    )
+  ),
+  'c': (
+    color: $ui-b
+  ),
+  'd': (
+    color: $secondary,
+
+    'hover': (
+      color: darken($secondary, 15%)
+    )
+  ),
+  'e': (
+    color: $ui-a,
+    border: solid 1px blue
+  ),
+  'f': (
+    background-color: darken($primary, 5%),
+    color: $ui-a,
+
+    'hover': (
+      background-color: $primary,
+      cursor: not-allowed
+    )
+  ),
+  'g': (
+    background-color: darken($secondary, 5%),
+    color: $ui-a,
+    border: solid 1px red,
+
+    'hover': (
+      background-color: $secondary
+    )
+  )
+);
+
+@include class(
+  $selector: '.swatch',
+  $shape: 'square',
+  $base: (
+    'size': 4rem,
+    'font-size': 1.5rem
+  ),
+  $variants: (
+    '--a': (
+      'swatch': map-get($swatches, 'a')
+    ),
+    '--b': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'b')
+    ),
+    '--c': (
+      'swatch': map-get($swatches, 'c')
+    ),
+    '--d': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'd')
+    ),
+    '--e': (
+      'swatch': map-get($swatches, 'e')
+    ),
+    '--f': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'f')
+    )
+  )
+);

@@ -1,0 +1,24 @@
+/// ----------------------------------------------------------------------
+
+/// Apply properties
+
+/// ----------------------------------------------------------------------
+
+///
+/// Loop through and apply styles
+///
+/// @param {Object} $props
+/// The swatch map containing style properties
+///
+@mixin apply-props(
+  $props
+) {
+  @each $style in $props {
+    $name: nth($style, 1);
+    $prop: nth($style, 2);
+
+    @if type-of($prop) != 'map' {
+      #{$name}: $prop;
+    }
+  }
+}

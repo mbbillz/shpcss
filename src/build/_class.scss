@@ -1,0 +1,54 @@
+/// ----------------------------------------------------------------------
+
+/// Class
+
+/// ----------------------------------------------------------------------
+
+///
+/// Build the CSS class
+///
+/// @param {String} $selector
+/// The desired selector
+///
+/// @param {String} $shape
+/// The desired shape of the element
+///
+/// @param {Object} $base
+/// The base properties of the element
+///
+/// @param {Object} $variants
+/// Swatch variants
+///
+/// @param {Object} $pseudo
+/// An object containing pseudo element properties
+///
+@mixin class(
+  $selector,
+  $shape,
+  $base,
+  $variants: null,
+  $pseudo: null
+) {
+
+  #{$selector} {
+    @if $base {
+      $args: $base;
+      @include shape-type($shape, false, $args);
+    }
+
+    @if $pseudo {
+      @include pseudo($pseudo...);
+    }
+
+    @if $variants {
+      @each $var in $variants {
+        $variant: nth($var, 1);
+        $args: nth($var, 2);
+        
+        &#{$variant} {
+          @include shape-type($shape, true, $args);  
+        }  
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+/// ----------------------------------------------------------------------
+
+/// Height
+
+/// ----------------------------------------------------------------------
+
+/// -------------------
+/// Height to padding
+/// -------------------
+///
+/// Output the right padding for the element's height and content offset
+///
+/// @param {Number} $height
+/// The height
+///
+/// @param {Number} $offsetY
+/// Where the content sits on the Y axis.
+///
+@mixin height-to-pad($height, $font-size, $offsetY) {
+  @if type-of(height-to-pad($height, $font-size, $offsetY)) == 'number' {
+    padding-top: height-to-pad($height, $font-size, $offsetY);
+    padding-bottom: height-to-pad($height, $font-size, $offsetY);
+  }
+  @else {
+    padding-top: map-get(height-to-pad($height, $font-size, $offsetY), 'top');
+    padding-bottom: map-get(height-to-pad($height, $font-size, $offsetY), 'bottom');
+  }
+}

@@ -1,0 +1,32 @@
+/// ----------------------------------------------------------------------
+
+/// Pseudo element
+
+/// ----------------------------------------------------------------------
+
+///
+/// Generate pseudo ::before or ::after element
+///
+/// @param {Object} $pseudo
+/// The map containing the different states (:hover, :active etc)
+///
+/// @param {Object} $shape
+/// The desired element shape
+///
+/// @param {Object} $swatch
+/// The swatch map containing style properties
+///
+/// @param {String} $content
+/// CSS content property
+///
+@mixin pseudo(
+  $pseudo: 'after',
+  $shape: null,
+  $swatch: null,
+  $content: ''
+) {
+  &::#{$pseudo} {
+    content: $content;
+    display: block;
+  }
+}

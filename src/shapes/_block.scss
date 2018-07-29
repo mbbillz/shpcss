@@ -1,0 +1,52 @@
+/// ----------------------------------------------------------------------
+
+/// Block
+
+/// ----------------------------------------------------------------------
+
+$block: (
+  display: inline-block,
+  position: relative,
+  background: none,
+  border: none
+);
+
+///
+/// Generate a block
+///
+/// @param {Number} $width
+/// The width
+///
+/// @param {Number} $height
+/// The height
+///
+/// @param {Object} $swatch
+/// The swatch map containing style properties
+///
+/// @param {Boolean} $interactive
+/// Whether to generate states for the element (hover, active etc)
+///
+@mixin block(
+  $variant,
+  $width: null,
+  $height: null,
+  $text-offset-y: .5,
+  $swatch: null,
+  $custom: null,
+  $interactive: false
+) {
+  width: $width;
+
+  @if type-of($height) == 'number' {
+    @include height-to-pad($height, 16px, $text-offset-y);
+  }
+  @else {
+    height: $height;
+  }
+
+  @if $interactive {
+    @include interactive($swatch, $custom);
+  }
+
+  @include apply-props(props($block, $swatch, $custom, $variant));
+}

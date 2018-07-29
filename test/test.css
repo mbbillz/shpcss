@@ -1,0 +1,95 @@
+.swatch {
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  display: block; }
+  .swatch--a {
+    background: radial-gradient(ellipse at center, #101010 0%, #000 100%);
+    color: #FFF; }
+  .swatch--b {
+    background-color: #101010;
+    color: #777; }
+    .swatch--b:hover {
+      cursor: pointer;
+      outline: none;
+      color: #FFF; }
+  .swatch--c {
+    color: #777; }
+  .swatch--d {
+    color: #2e14c4; }
+    .swatch--d:hover {
+      cursor: pointer;
+      outline: none;
+      color: #1e0d7f; }
+  .swatch--e {
+    color: #FFF;
+    border: solid 1px blue; }
+  .swatch--f {
+    background-color: #e60000;
+    color: #FFF; }
+    .swatch--f:hover {
+      cursor: not-allowed;
+      outline: none;
+      background-color: #ff0000; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+nav {
+  width: 100%;
+  padding-top: 2.5625rem;
+  padding-bottom: 2.5625rem;
+  display: inline-block;
+  position: relative;
+  background: none;
+  border: none; }
+
+.nav__list {
+  width: 100%;
+  height: auto;
+  display: flex;
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  justify-content: space-between; }
+
+.nav__link {
+  display: inline-block;
+  position: relative;
+  background: none;
+  border: none;
+  background-color: #e60000;
+  color: #FFF; }
+
+.btn {
+  width: 100px;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  display: inline-block;
+  position: relative;
+  background: none;
+  border: none; }
+  .btn--primary {
+    background-color: #e60000;
+    color: #FFF;
+    cursor: not-allowed;
+    text-transform: uppercase; }
+    .btn--primary:hover {
+      cursor: not-allowed;
+      outline: none;
+      background-color: #ff0000;
+      text-transform: uppercase; }
+  .btn--secondary {
+    background-color: #2912ad;
+    color: #FFF;
+    border: solid 1px red; }
+    .btn--secondary:hover {
+      cursor: pointer;
+      outline: none;
+      background-color: #2e14c4; }
+
+/*# sourceMappingURL=test.css.map */

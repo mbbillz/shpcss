@@ -1,0 +1,44 @@
+/// ----------------------------------------------------------------------
+
+/// Build props
+
+/// ----------------------------------------------------------------------
+
+/// -------------------
+/// Build final style object
+/// -------------------
+///
+/// Takes style maps and removes duplicate styles
+///
+/// @param {String} $variant
+/// Whether the elem is a variant or not
+///
+/// @param {String} $shape
+/// The shape's default properties
+///
+/// @param {String} $swatch
+/// The swatch properties
+///
+/// @param {String} $custom
+/// Any custom properties
+///
+/// @return {Object} 
+/// The cleaned style object
+///
+@function props(
+  $shape,
+  $swatch,
+  $custom,
+  $variant: null
+) {
+  $props: ();
+  $custom: if($custom, $custom, ());
+  $swatch: if($swatch, $swatch, ());
+
+  $props: if($variant,
+    map-merge($swatch, $custom),
+    map-merge(map-merge($shape, $swatch), $custom)
+  );
+
+  @return $props;
+}

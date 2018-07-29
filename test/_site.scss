@@ -1,0 +1,66 @@
+/// ----------------------------------------------------------------------
+
+/// Site
+
+/// ----------------------------------------------------------------------
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@include class(
+  $selector: 'nav',
+  $shape: 'block',
+  $base: (
+    'width': 100%,
+    'height': 110px
+  )
+);
+
+@include class(
+  $selector: '.nav__list',
+  $shape: 'block',
+  $base: (
+    'width': 100%,
+    'height': auto,
+    'custom': (
+      display: flex,
+      padding: 0,
+      margin: 0,
+      list-style-type: none,
+      justify-content: space-between
+    )
+  )
+);
+
+@include class(
+  $selector: '.nav__link',
+  $shape: 'block',
+  $base: (
+    'swatch': map-get($swatches, 'f')
+  )
+);
+
+@include class(
+  $selector: '.btn',
+  $shape: 'block',
+  $base: (
+    'width': 100px,
+    'height': 40px
+  ),
+  $variants: (
+    '--primary': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'f'),
+      'custom': (
+        cursor: not-allowed,
+        text-transform: uppercase
+      )
+    ),
+    '--secondary': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'g')
+    )
+  )
+);

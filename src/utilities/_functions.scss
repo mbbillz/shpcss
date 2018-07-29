@@ -1,0 +1,94 @@
+/// ----------------------------------------------------------------------
+
+/// Functions
+
+/// ----------------------------------------------------------------------
+
+/// -------------------
+/// Strip unit
+/// -------------------
+///
+/// Strip unit from number
+///
+/// @param {String} $number
+/// The original value with unit
+///
+/// @return {Number} 
+/// The unitless value
+///
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+/// -------------------
+/// PX to rem
+/// -------------------
+///
+/// Convert PX to REM
+///
+/// @param {String} $px
+/// The pixel size
+///
+/// @param {Number} $base-font-size
+/// The font size to base the conversion on
+///
+/// @return {String} 
+/// The pixel value converted to REM
+///
+@function rem($px, $base-font-size: 16) {
+  $rem: strip-unit($px) / $base-font-size;
+  @return $rem * 1rem;
+}
+
+/// -------------------
+/// Padding height 
+/// -------------------
+///
+/// Set an element's height using padding instead of fixed height. Also converts px to rem.
+/// For example, to make a button with height of 30px:
+///
+/// @example scss
+/// .button {
+///   padding: height-to-pad(30px);
+/// }
+///
+/// Also supports offsets using a mixin, so to generate a button with height of 30px but align text 75% towards the bottom:
+///
+/// @example scss
+/// .button {
+///   @include height-to-pad(30px, .75);
+/// }
+///
+/// @param {Number} $x
+/// The height in px
+///
+/// @param {Number} $font-size
+/// The font-size of the element defaults to base font size
+///
+/// @param {Number} $offsetY
+/// The vertical positioning of the text - a number from 0 to 1
+///
+/// @return {Number||Object}
+/// Either a value in REMs (using px to rem)
+///
+@function height-to-pad($x, $font-size: 16px, $offsetY: .5) {
+
+  $font-size: if(str-index($string: #{$font-size}, $substring: 'px'), rem($font-size), $font-size);
+  $x: if(str-index($string: #{$x}, $substring: 'px'), rem($x), $x);
+
+  $z: $font-size * 1.75;
+  $y1: ($x - $z) * $offsetY;
+  $y2: ($x - $z) * (1 - $offsetY);
+
+  @if ($y1 == $y2) {
+    @return $y1;
+  }
+  @else {
+    $values: ('top': $y1, 'bottom': $y2);
+    @return $values;
+  }
+}
