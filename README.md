@@ -1,14 +1,13 @@
 # 🔺◼️ SHPCSS 🔺◼️
 
-- Build modular and scalable CSS at high speed
-- Keep all related styles in one place
-- Quickly define element variants - perfect for BEMs
-- Minimal or no need to write 'actual' CSS 
-- Change a property shape or swatch with one line
+- Build DRY, modular and scalable stylesheets at high speed
+- Define a single 'source of truth' for all of your website's styles for easier maintainability
+- Quickly generate element variants - perfect for BEMs and theming
+- Ensures that your codebase is DRY and organised
+- Change an element's shape or swatch with one line
 - Decouple styles from selectors
-- Utilise a single 'source of truth' for all of your website's styles and colours
-- Perfect for theming
-- A whole bunch of useful mixins for alignment, positioning etc
+- Little to no need to manually write CSS
+- Includes a bunch of useful mixins for alignment, positioning etc (WIP)
 - No duplicate CSS properties
 
 > **IMPORTANT:** This project is currently just a **CONCEPT** and is not ready for production. Suggestions and contributions welcomed!
@@ -33,6 +32,7 @@ Once you've broken your website into swatches, you can pick and choose as you li
 ### To do
 - Circle
 - Triangle
+- More inbuilt functions/mixins
 - Better documentation
 - A proper demo!
 
@@ -76,8 +76,9 @@ If you're using a square:
 | `size`| true | Number | Your desired square size | value and unit e.g `10px`, `2rem` |
 
 ###### Block properties
-If you're using a square:
+If you're using a block:
 
 | Property | Optional | Type | Description | Value |
 |:-|:-|:-|:-|:-|
-| `size`| true | Number | Your desired square size | value and unit e.g `10px`, `2rem` |
+| `width`| true | Number | Your desired block width | e.g `100%`, `auto` |
+| `height`| true | Number | Your desired block height | value and unit e.g `10px`, `2rem` |
