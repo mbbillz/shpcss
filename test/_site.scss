@@ -87,23 +87,3 @@
   )
 );
 
-/// -------------------
-/// Inputs
-/// -------------------
-
-// @include class(
-//   $selector: '.input',
-//   $shape: 'block',
-//   $base: (
-//     'width': auto,
-//     'height': 60px
-//   ),
-//   $variants: (
-//     '--error': (
-//       'swatch': map-get($swatches, 'f')
-//     ),
-//     '--warning': (
-//       'swatch': map-get($swatches, 'g')
-//     )
-//   )
-// );
