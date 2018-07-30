@@ -1,4 +1,4 @@
-# ⚪🔺◼️ SHPCSS ⚪🔺◼️
+# 🔺◼️ SHPCSS 🔺◼️
 
 - Build modular and scalable CSS at high speed
 - Keep all related styles in one place
