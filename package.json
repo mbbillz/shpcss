@@ -1,7 +1,7 @@
 {
   "name": "shpcss",
   "version": "1.0.0",
-  "description": "A tool that rapidly builds DRY, modular and scalable stylesheets",
+  "description": "A simpler way to write SCSS.",
   "main": "index.js",
   "directories": {
     "test": "test"
