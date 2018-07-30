@@ -11,7 +11,7 @@
 - A whole bunch of useful mixins for alignment, positioning etc
 - No duplicate CSS properties
 
- **IMPORTANT:** This project is currently just a **CONCEPT** and is not ready for production. Suggestions and contributions welcomed!
+> **IMPORTANT:** This project is currently just a **CONCEPT** and is not ready for production. Suggestions and contributions welcomed!
 
 SHPCSS hopes to simplify and speed up the creation of stylesheets by taking every web component and abstracting it to its simplest form. The idea is that every DOM node shares common properties, for example; almost everything has a size (width, height, padding etc) and colour (background, border, text etc). SHPCSS has broken these common properties into two core concepts: `swatches` & `shapes`.
 
