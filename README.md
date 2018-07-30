@@ -11,7 +11,7 @@
 - A whole bunch of useful mixins for alignment, positioning etc
 - No duplicate CSS properties
 
-> **IMPORTANT:** This project is currently just a **CONCEPT** and is not ready for production. Suggestions and contributions welcomed!
+ **IMPORTANT:** This project is currently just a **CONCEPT** and is not ready for production. Suggestions and contributions welcomed!
 
 SHPCSS hopes to simplify and speed up the creation of stylesheets by taking every web component and abstracting it to its simplest form. The idea is that every DOM node shares common properties, for example; almost everything has a size (width, height, padding etc) and colour (background, border, text etc). SHPCSS has broken these common properties into two core concepts: `swatches` & `shapes`.
 
@@ -50,12 +50,12 @@ SHPCSS utilises a main mixin, `@include class()` and maps containing your swatch
 
 | Arg | Optional | Type | Description | Value |
 |:-|:-|:-|:-|:-|
-| `$selector`| false | <String> | Your desired core selector | `.selector`, `#id`, `tag` |
-| `$shape` | false | <String> | The shape | `block`, `square` |
-| `$reset` | false | <String> | Apply a reset/normalise to this element | `body`, `list` |
-| `$base` | true | <Object> | A map containing base properties | See below |
-| `$variants` | true | <Object> | A map containing variant properties | See below |
-| `$pseudo` | true | <Object> | A map containing pseudo (::before and ::after) element properties | null | See below |
+| `$selector`| false | String | Your desired core selector | `.selector`, `#id`, `tag` |
+| `$shape` | false | String | The shape | `block`, `square` |
+| `$reset` | false | String | Apply a reset/normalise to this element | `body`, `list` |
+| `$base` | true | Object | A map containing base properties | See below |
+| `$variants` | true | Object | A map containing variant properties | See below |
+| `$pseudo` | true | Object | A map containing pseudo (::before and ::after) element properties | null | See below |
 
 ##### Base map
 The properties you pass in your base map will vary depending on the shape but there are some shared properties you can use
@@ -64,20 +64,20 @@ These properties can be used for all shapes
 
 | Property | Optional | Type | Description | Value |
 |:-|:-|:-|:-|:-|
-| `swatch`| true | <Object> | Apply a swatch to the current element | map with swatch styles e.g `map-get($swatches, 'swatch-a')` |
-| `align`| true | <String> | Align the current element | `center`, `center-x`, `center-y` |
-| `children`| true | <String> | Align the current element's children | `center`, `center-x`, or a flex value e.g `space-between` |
+| `swatch`| true | Object | Apply a swatch to the current element | map with swatch styles e.g `map-get($swatches, 'swatch-a')` |
+| `align`| true | String | Align the current element | `center`, `center-x`, `center-y` |
+| `children`| true | String | Align the current element's children | `center`, `center-x`, or a flex value e.g `space-between` |
 
 ###### Square properties
 If you're using a square:
 
 | Property | Optional | Type | Description | Value |
 |:-|:-|:-|:-|:-|
-| `size`| true | <Number> | Your desired square size | value and unit e.g `10px`, `2rem` |
+| `size`| true | Number | Your desired square size | value and unit e.g `10px`, `2rem` |
 
 ###### Block properties
 If you're using a square:
 
 | Property | Optional | Type | Description | Value |
 |:-|:-|:-|:-|:-|
-| `size`| true | <Number> | Your desired square size | value and unit e.g `10px`, `2rem` |
+| `size`| true | Number | Your desired square size | value and unit e.g `10px`, `2rem` |
