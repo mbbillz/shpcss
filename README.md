@@ -16,11 +16,11 @@ A simpler way to write SCSS.
 
 SHPCSS hopes to simplify and speed up the creation of stylesheets by taking every web component and abstracting it to its simplest form. The idea is that every DOM node shares common properties, for example; almost everything has a size (width, height, padding etc) and colour (background, border, text etc). SHPCSS has broken these common properties into two core concepts: `swatches` & `shapes`.
 
-Every time you define a new class, it's likely that you're going to give that class some baseline properties, such as display, position, width, height etc, why not be able to just specify that it's a `block`? I have created these mixins so you can simply create a new `block` or `square` or `circle` and the rest is generated for you. The shapes contain predefined values that you can leave as default or override. For example, buttons, inputs, containers and list items are all conceptually `blocks`, so just define them as such let SHPCSS generate the CSS. 
+Every time you define a new class, it's likely that you're going to give that class some baseline properties, such as display, position, width, height etc, why not be able to just specify that it's a `block`? I have created these mixins so you can simply create a new `block` or `square` or `circle` and the rest is generated for you. The shapes contain predefined values that you can leave as default or override. For example, buttons, inputs, containers and list items are all conceptually `blocks`, so just define them as such let SHPCSS handle the build. 
 
-Once you've done this, this is where `swatches` come in. You've defined your checkboxes as squares, radios as circles and your main container as a block, but you recognise that actually they are all stylistically similar, therefore despite being different shapes, they can still share the same `swatch` which may comprise of a white background, some padding and a grey 1px border. Simply apply that swatch and you're done.
+Once you've done this, you'll want to apply a `swatch`. You've defined your checkboxes as squares, radios as circles and your main container as a block, but you recognise that actually they are all stylistically similar and despite being different shapes, they can still share the same `swatch` which may comprise of a white background, some padding and a grey 1px border. Simply apply that swatch and you're done.
 
-Once you've broken your website into swatches, you can pick and choose as you like and easily and quickly mix and match by changing very little code. You can also quickly generate interactivity, pseudo elements, variants (great for use with BEMs), aligned elements and much more that is all explained below!
+Once you've broken your website into swatches, you can pick and choose as you like and easily and quickly mix and match by changing very little code. You can also quickly generate interactivity, pseudo elements, variants (great for use with BEMs or similar conventions), aligned elements and much more!
 
 ### Current features
 - Class generator
@@ -44,7 +44,7 @@ Once you've broken your website into swatches, you can pick and choose as you li
 ### Installation
 `npm install shpcss`
 
-Include the library into your main SCSS project
+Include the library into your main SCSS project:
 `@import 'shpcss';`
 
 ### Usage
