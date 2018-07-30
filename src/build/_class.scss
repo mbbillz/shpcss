@@ -25,7 +25,8 @@
 @mixin class(
   $selector,
   $shape,
-  $base,
+  $reset: null,
+  $base: null,
   $variants: null,
   $pseudo: null
 ) {
@@ -33,7 +34,10 @@
   #{$selector} {
     @if $base {
       $args: $base;
-      @include shape-type($shape, false, $args);
+      @include shape-type($shape, false, $reset, $args...);
+    }
+    @else {
+      @include shape-type($shape, false, $reset, null);
     }
 
     @if $pseudo {
@@ -46,7 +50,7 @@
         $args: nth($var, 2);
         
         &#{$variant} {
-          @include shape-type($shape, true, $args);  
+          @include shape-type($shape, true, $reset, $args...);  
         }  
       }
     }

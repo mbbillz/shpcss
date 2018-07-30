@@ -4,63 +4,106 @@
 
 /// ----------------------------------------------------------------------
 
-body {
-  margin: 0;
-  padding: 0;
-}
+/// -------------------
+/// Body
+/// -------------------
 
 @include class(
-  $selector: 'nav',
+  $selector: 'body, html',
   $shape: 'block',
+  $reset: 'body',
   $base: (
-    'width': 100%,
-    'height': 110px
-  )
-);
-
-@include class(
-  $selector: '.nav__list',
-  $shape: 'block',
-  $base: (
-    'width': 100%,
-    'height': auto,
     'custom': (
-      display: flex,
-      padding: 0,
-      margin: 0,
-      list-style-type: none,
-      justify-content: space-between
+      font-family: sans-serif
     )
   )
 );
 
+/// -------------------
+/// Swatches
+/// -------------------
+
 @include class(
-  $selector: '.nav__link',
-  $shape: 'block',
+  $selector: '.swatch',
+  $shape: 'square',
   $base: (
-    'swatch': map-get($swatches, 'f')
+    'size': rem(50px)
+  ),
+  $variants: (
+    '--a': (
+      'swatch': map-get($swatches, 'ui-a')
+    ),
+    '--b': (
+      'swatch': map-get($swatches, 'ui-b')
+    ),
+    '--c': (
+      'swatch': map-get($swatches, 'type-b')
+    ),
+    '--d': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'link-a')
+    ),
+    '--e': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'link-b')
+    ),
+    '--f': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'btn-a')
+    ),
+    '--g': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'btn-b')
+    )
   )
 );
+
+/// -------------------
+/// Buttons
+/// -------------------
 
 @include class(
   $selector: '.btn',
   $shape: 'block',
   $base: (
-    'width': 100px,
-    'height': 40px
+    'width': auto,
+    'custom': (
+      padding: 1rem 1.5rem
+    )
   ),
   $variants: (
-    '--primary': (
+    '--a': (
       'interactive': true,
-      'swatch': map-get($swatches, 'f'),
-      'custom': (
-        cursor: not-allowed,
-        text-transform: uppercase
-      )
+      'swatch': map-get($swatches, 'btn-a')
     ),
-    '--secondary': (
+    '--b': (
       'interactive': true,
-      'swatch': map-get($swatches, 'g')
+      'swatch': map-get($swatches, 'btn-b')
+    ),
+    '--c': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'btn-c')
     )
   )
 );
+
+/// -------------------
+/// Inputs
+/// -------------------
+
+// @include class(
+//   $selector: '.input',
+//   $shape: 'block',
+//   $base: (
+//     'width': auto,
+//     'height': 60px
+//   ),
+//   $variants: (
+//     '--error': (
+//       'swatch': map-get($swatches, 'f')
+//     ),
+//     '--warning': (
+//       'swatch': map-get($swatches, 'g')
+//     )
+//   )
+// );

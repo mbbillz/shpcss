@@ -1,0 +1,22 @@
+/// ----------------------------------------------------------------------
+
+/// Strip unit
+
+/// ----------------------------------------------------------------------
+
+///
+/// Strip unit from number
+///
+/// @param {String} $number
+/// The original value with unit
+///
+/// @return {Number} 
+/// The unitless value
+///
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}

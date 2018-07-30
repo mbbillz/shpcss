@@ -1,0 +1,49 @@
+/// ----------------------------------------------------------------------
+
+/// Align children
+
+/// ----------------------------------------------------------------------
+
+///
+/// Output the right padding for the element's height and content offset
+///
+/// @param {Number} $height
+/// The height
+///
+/// @param {Number} $offsetY
+/// Where the content sits on the Y axis.
+///
+@function children($children) {
+  $props: ();
+
+  @if $children == 'center' {
+    $props: (
+      display: flex,
+      justify-content: center,
+      align-items: center
+    );
+  }
+    
+  @elseif $children == 'center-x' {
+    $props: (
+      display: flex,
+      justify-content: center,
+    );
+  }
+
+  @elseif $children == 'center-y' {
+    $props: (
+      display: flex,
+      align-items: center,
+    );
+  }
+
+  @elseif $children {
+    $props: (
+      display: flex,
+      justify-content: $children,
+    );
+  }
+
+  @return $props;
+}

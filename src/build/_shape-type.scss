@@ -1,0 +1,46 @@
+/// ----------------------------------------------------------------------
+
+/// Shape type
+
+/// ----------------------------------------------------------------------
+
+///
+/// Apply the correct shape mixin
+///
+/// @param {Object} $shape
+/// The desired element shape
+///
+/// @param {Object} $args
+/// The arguments passed from the 
+///
+@mixin shape-type(
+  $shape,
+  $variant,
+  $reset: null,
+  $swatch: null,
+  $align: null,
+  $children: null,
+  $interactive: false,
+  $size: null,
+  $width: null,
+  $height: null,
+  $custom: null
+) {
+  $props: ();
+
+  @if $shape == 'square' {
+    $props: square($size);
+  }
+  @elseif $shape == 'block' {
+    $props: block($width, $height);
+  }
+
+  $props: map-merge($props, reset($reset));
+  $props: map-merge($props, align($align));
+  $props: map-merge($props, children($children));
+  
+  @if $interactive {
+    @include interactive($swatch);
+  }
+  @include apply-props(props($props, $swatch, $custom, $variant));
+}

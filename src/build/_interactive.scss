@@ -4,6 +4,13 @@
 
 /// ----------------------------------------------------------------------
 
+/// -------------------
+/// Interactive properties
+/// -------------------
+///
+/// Contains the default properties for an interactive block
+/// Will be overidden by swatch or custom styles
+///
 $interactive: (
   cursor: pointer,
   outline: none
@@ -19,8 +26,7 @@ $interactive: (
 /// The swatch map containing style properties
 ///
 @mixin interactive(
-  $states,
-  $custom
+  $states
 ) {
   @each $state in $states {
     $name: nth($state, 1);
@@ -28,7 +34,7 @@ $interactive: (
 
     @if type-of($map) == 'map' {
       &:#{$name} {
-        @include apply-props(props($interactive, $map, $custom));
+        @include apply-props(props($interactive, $map));
       }
     }
   }

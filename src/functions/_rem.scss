@@ -1,0 +1,22 @@
+/// ----------------------------------------------------------------------
+
+/// PX to rem
+
+/// ----------------------------------------------------------------------
+
+///
+/// Convert PX to REM
+///
+/// @param {String} $px
+/// The pixel size
+///
+/// @param {Number} $base-font-size
+/// The font size to base the conversion on
+///
+/// @return {String} 
+/// The pixel value converted to REM
+///
+@function rem($px, $base-font-size: 16) {
+  $rem: strip-unit($px) / $base-font-size;
+  @return $rem * 1rem;
+}

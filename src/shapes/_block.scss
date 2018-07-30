@@ -4,11 +4,18 @@
 
 /// ----------------------------------------------------------------------
 
-$block: (
-  display: inline-block,
+/// -------------------
+/// Default block properties
+/// -------------------
+///
+/// Contains the default properties for a standard block
+/// Will be overidden by swatch or custom styles
+///
+$default: (
   position: relative,
   background: none,
-  border: none
+  border: none,
+  box-sizing: border-box
 );
 
 ///
@@ -26,27 +33,14 @@ $block: (
 /// @param {Boolean} $interactive
 /// Whether to generate states for the element (hover, active etc)
 ///
-@mixin block(
-  $variant,
+@function block(
   $width: null,
-  $height: null,
-  $text-offset-y: .5,
-  $swatch: null,
-  $custom: null,
-  $interactive: false
+  $height: null
 ) {
-  width: $width;
 
-  @if type-of($height) == 'number' {
-    @include height-to-pad($height, 16px, $text-offset-y);
-  }
-  @else {
-    height: $height;
-  }
-
-  @if $interactive {
-    @include interactive($swatch, $custom);
-  }
-
-  @include apply-props(props($block, $swatch, $custom, $variant));
+  $block: map-merge($default, ());
+  $block: if($height, map-merge($block, (height: $height)), $block);
+  $block: if($width, map-merge($block, (width: $width)), $block);
+  
+  @return $block;
 }

@@ -3,12 +3,18 @@
 @import 'src/shapes/square';
 @import 'src/shapes/block';
 
-@import 'src/utilities/functions';
-@import 'src/utilities/height';
-@import 'src/utilities/pseudo';
-@import 'src/utilities/shape-type';
-@import 'src/utilities/apply-props';
-@import 'src/utilities/interactive';
+@import 'src/functions/reset';
+@import 'src/functions/align';
+@import 'src/functions/children';
+@import 'src/functions/rem';
+@import 'src/functions/strip-unit';
+@import 'src/functions/height-to-pad';
 
+@import 'src/utilities/height';
+
+@import 'src/build/pseudo';
+@import 'src/build/shape-type';
+@import 'src/build/apply-props';
+@import 'src/build/interactive';
 @import 'src/build/props';
 @import 'src/build/class';

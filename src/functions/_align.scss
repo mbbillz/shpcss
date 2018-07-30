@@ -1,0 +1,45 @@
+/// ----------------------------------------------------------------------
+
+/// Align
+
+/// ----------------------------------------------------------------------
+
+///
+/// Output the right padding for the element's height and content offset
+///
+/// @param {Number} $height
+/// The height
+///
+/// @param {Number} $offsetY
+/// Where the content sits on the Y axis.
+///
+@function align($align) {
+  $props: ();
+
+  @if $align == 'center' {
+    $props: (
+      position: absolute,
+      top: 50%,
+      left: 50%,
+      transform: translate(-50%, -50%)
+    );
+  }
+
+  @if $align == 'center-x' {
+    $props: (
+      position: absolute,
+      left: 50%,
+      transform: translateX(-50%)
+    );
+  }
+
+  @if $align == 'center-y' {
+    $props: (
+      position: absolute,
+      top: 50%,
+      transform: translateY(-50%)
+    );
+  }
+
+  @return $props;
+}

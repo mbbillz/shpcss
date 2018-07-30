@@ -4,7 +4,14 @@
 
 /// ----------------------------------------------------------------------
 
-$square: (
+/// -------------------
+/// Default square properties
+/// -------------------
+///
+/// Contains the default properties for a square
+/// Will be overidden by swatch or custom styles
+///
+$default: (
   display: block
 );
 
@@ -20,21 +27,11 @@ $square: (
 /// @param {Boolean} $interactive
 /// Whether to generate states for the element (hover, active etc)
 ///
-@mixin square(
-  $variant,
-  $size: null,
-  $font-size: null,
-  $swatch: null,
-  $custom: null,
-  $interactive: false
+@function square(
+  $size: null
 ) {
-  width: $size;
-  height: $size;
-  font-size: $font-size;
+  
+  $square: if($size, map-merge($default, (width: $size, height: $size)), $default);
 
-  @if $interactive {
-    @include interactive($swatch, $custom);
-  }
-
-  @include apply-props(props($square, $swatch, $custom, $variant));
+  @return $square;
 }

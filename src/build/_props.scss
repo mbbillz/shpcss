@@ -28,7 +28,7 @@
 @function props(
   $shape,
   $swatch,
-  $custom,
+  $custom: null,
   $variant: null
 ) {
   $props: ();

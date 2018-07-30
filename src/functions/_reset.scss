@@ -1,0 +1,45 @@
+/// ----------------------------------------------------------------------
+
+/// Reset
+
+/// ----------------------------------------------------------------------
+
+///
+/// Output the right padding for the element's height and content offset
+///
+/// @param {Number} $height
+/// The height
+///
+/// @param {Number} $offsetY
+/// Where the content sits on the Y axis.
+///
+@function reset($reset) {
+  $props: ();
+
+  @if $reset == 'list' {
+    $props: (
+      list-style: none,
+      margin: 0,
+      padding: 0
+    )
+  }
+
+  @elseif $reset == 'body' {
+    $props: (
+      position: null,
+      background: null,
+      border: null,
+      margin: 0,
+      padding: 0
+    )
+  }
+
+  @elseif $reset == 'button' {
+    $props: (
+      background: none,
+      border: none
+    )
+  }
+
+  @return $props;
+}
