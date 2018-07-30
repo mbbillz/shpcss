@@ -1,6 +1,8 @@
 # 🔺◼️ SHPCSS 🔺◼️
 
-- Build DRY, modular and scalable stylesheets at high speed
+A simpler way to write SCSS.
+
+- Rapidly develop DRY, modular and scalable stylesheets.
 - Define a single 'source of truth' for all of your website's styles for easier maintainability
 - Quickly generate element variants - perfect for BEMs and theming
 - Ensures that your codebase is DRY and organised
