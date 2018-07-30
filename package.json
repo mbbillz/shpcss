@@ -1,7 +1,7 @@
 {
   "name": "shpcss",
   "version": "1.0.0",
-  "description": "Build modular and scalable CSS rapidly",
+  "description": "A tool that rapidly builds DRY, modular and scalable stylesheets",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -13,6 +13,21 @@
     "type": "git",
     "url": "git+https://github.com/mbbillz/shpcss.git"
   },
+  "keywords": [
+    "shape",
+    "sass",
+    "css",
+    "maintainable",
+    "BEM",
+    "scss",
+    "modular",
+    "dry",
+    "reusable",
+    "mixins",
+    "generating",
+    "css",
+    "js"
+  ],
   "author": "Milly Billins",
   "license": "ISC",
   "bugs": {
