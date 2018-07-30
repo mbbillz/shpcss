@@ -6,7 +6,7 @@ A simpler way to write SCSS.
 - Define a single 'source of truth' for all of your website's styles for easier maintainability
 - Quickly generate element variants - perfect for BEMs and theming
 - Ensures that your codebase is DRY and organised
-- Change an element's shape or swatch with one line
+- Change an element's properties with one line
 - Decouple styles from selectors
 - Little to no need to manually write CSS
 - Includes a bunch of useful mixins for alignment, positioning etc (WIP)
