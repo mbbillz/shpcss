@@ -17,32 +17,21 @@ A simpler way to write SCSS.
 SHPCSS hopes to simplify and speed up the creation of stylesheets by taking every web component and abstracting it to its simplest form. The idea is that every DOM node shares common properties, for example; almost everything has a size (width, height, padding etc) and colour (background, border, text etc). SHPCSS has broken these common properties into two core concepts: `swatches` & `shapes`.
 
 
-### Example
-To generate a .btn selector with BEM style variants, define a map containing `swatches`:
+### Simple usage
+Define a map containing `swatches`:
 
 ```
 $swatches: (
-  'btn-a': (
-    background-color: darken($primary, 5%),
-    color: $ui-a,
-    'hover': (
-      background-color: $primary
-    )
-  ),
-  'btn-b': (
-    background-color: darken($secondary, 5%),
-    color: $ui-a,
-    'hover': (
-      background-color: $secondary
-    )
-  ),
-  'btn-c': (
-    border: solid 1px darken($secondary, 5%),
+  'a': (
+    border: solid 2px darken($secondary, 5%),
     color: $secondary,
+    text-transform: uppercase,
+    font-weight: bold,
     'hover': (
-      border-color: $secondary
+      color: $ui-a,
+      background-color: $secondary,
     )
-  )
+  ),
 );
 ```
 
@@ -50,7 +39,7 @@ Include the main `class()` mixin:
 
 ```
 @include class(
-  $selector: '.btn',
+  $selector: '.swatch',
   $shape: 'block',
   $base: (
     'width': auto,
@@ -61,15 +50,7 @@ Include the main `class()` mixin:
   $variants: (
     '--a': (
       'interactive': true,
-      'swatch': map-get($swatches, 'btn-a')
-    ),
-    '--b': (
-      'interactive': true,
-      'swatch': map-get($swatches, 'btn-b')
-    ),
-    '--c': (
-      'interactive': true,
-      'swatch': map-get($swatches, 'btn-c')
+      'swatch': map-get($swatches, 'a')
     )
   )
 );
@@ -78,7 +59,7 @@ Include the main `class()` mixin:
 SHPCSS will output:
 
 ```
-.btn {
+.swatch {
   position: relative;
   background: none;
   border: none;
@@ -86,32 +67,17 @@ SHPCSS will output:
   width: auto;
   padding: 1rem 1.5rem;
 }
-.btn--a {
-  background-color: #e60000;
-  color: #fff;
-}
-.btn--a:hover {
-  cursor: pointer;
-  outline: none;
-  background-color: #ff0000;
-}
-.btn--b {
-  background-color: #2912ad;
-  color: #fff;
-}
-.btn--b:hover {
-  cursor: pointer;
-  outline: none;
-  background-color: #2e14c4;
-}
-.btn--c {
-  border: solid 1px #2912ad;
+.swatch--a {
+  border: solid 2px #2912ad;
   color: #2e14c4;
+  text-transform: uppercase;
+  font-weight: bold;
 }
-.btn--c:hover {
+.swatch--a:hover {
   cursor: pointer;
   outline: none;
-  border-color: #2e14c4;
+  color: #fff;
+  background-color: #2e14c4;
 }
 ```
 
