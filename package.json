@@ -1,6 +1,6 @@
 {
   "name": "shpcss",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Build modular and scalable CSS rapidly",
   "main": "index.js",
   "directories": {
