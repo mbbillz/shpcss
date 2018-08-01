@@ -16,6 +16,72 @@ A simpler way to write SCSS.
 
 SHPCSS hopes to simplify and speed up the creation of stylesheets by taking every web component and abstracting it to its simplest form. The idea is that every DOM node shares common properties, for example; almost everything has a size (width, height, padding etc) and colour (background, border, text etc). SHPCSS has broken these common properties into two core concepts: `swatches` & `shapes`.
 
+
+### Simple usage
+Define a map containing `swatches`:
+
+```
+$swatches: (
+  'a': (
+    border: solid 2px darken($secondary, 5%),
+    color: $secondary,
+    text-transform: uppercase,
+    font-weight: bold,
+    'hover': (
+      color: $ui-a,
+      background-color: $secondary,
+    )
+  ),
+);
+```
+
+Include the main `class()` mixin:
+
+```
+@include class(
+  $selector: '.swatch',
+  $shape: 'block',
+  $base: (
+    'width': auto,
+    'custom': (
+      padding: 1rem 1.5rem
+    )
+  ),
+  $variants: (
+    '--a': (
+      'interactive': true,
+      'swatch': map-get($swatches, 'a')
+    )
+  )
+);
+```
+
+SHPCSS will output:
+
+```
+.swatch {
+  position: relative;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  width: auto;
+  padding: 1rem 1.5rem;
+}
+.swatch--a {
+  border: solid 2px #2912ad;
+  color: #2e14c4;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.swatch--a:hover {
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #2e14c4;
+}
+```
+
+### About
 Every time you define a new class, it's likely that you're going to give that class some baseline properties, such as display, position, width, height etc, why not be able to just specify that it's a `block`? I have created these mixins so you can simply create a new `block` or `square` or `circle` and the rest is generated for you. The shapes contain predefined values that you can leave as default or override. For example, buttons, inputs, containers and list items are all conceptually `blocks`, so just define them as such let SHPCSS handle the build. 
 
 Once you've done this, you'll want to apply a `swatch`. You've defined your checkboxes as squares, radios as circles and your main container as a block, but you recognise that actually they are all stylistically similar and despite being different shapes, they can still share the same `swatch` which may comprise of a white background, some padding and a grey 1px border. Simply apply that swatch and you're done.
@@ -84,3 +150,5 @@ If you're using a block:
 |:-|:-|:-|:-|:-|
 | `width`| true | Number | Your desired block width | e.g `100%`, `auto` |
 | `height`| true | Number | Your desired block height | value and unit e.g `10px`, `2rem` |
+
+
