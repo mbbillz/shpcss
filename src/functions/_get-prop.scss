@@ -1,0 +1,35 @@
+/// ----------------------------------------------------------------------
+
+/// Get Property
+
+/// ----------------------------------------------------------------------
+
+///
+/// Used to get a property from a map..
+///
+/// @param {String} $map Name of map.
+///
+/// @param {String} $key.
+///
+@function get-prop($map, $key, $prop: null) {
+  @if ($prop) {
+    $getKey: map-get($map, #{nth($key, 1)});
+  
+    @if ($getKey) {
+      $getProp: map-get($getKey, $prop);
+  
+      @if ($getProp) {
+        @return $getProp;
+      }
+      @else {
+        @return null;
+      }
+    }
+    @else {
+      @error 'The map #{$map} doesn\'t exist';
+    }
+  }
+  @else {
+    @return map-get($map, $key);
+  }
+}

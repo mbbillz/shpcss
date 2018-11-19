@@ -21,12 +21,6 @@ $default: (
 /// @param {Number} $size
 /// The width and height
 ///
-/// @param {Object} $swatch
-/// The swatch map containing style properties
-///
-/// @param {Boolean} $interactive
-/// Whether to generate states for the element (hover, active etc)
-///
 @function square(
   $size: null
 ) {

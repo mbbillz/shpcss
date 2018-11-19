@@ -40,19 +40,15 @@
       'swatch': map-get($swatches, 'type-b')
     ),
     '--d': (
-      'interactive': true,
       'swatch': map-get($swatches, 'link-a')
     ),
     '--e': (
-      'interactive': true,
       'swatch': map-get($swatches, 'link-b')
     ),
     '--f': (
-      'interactive': true,
       'swatch': map-get($swatches, 'btn-a')
     ),
     '--g': (
-      'interactive': true,
       'swatch': map-get($swatches, 'btn-b')
     )
   )

@@ -13,33 +13,52 @@
 /// @param {Number} $offsetY
 /// Where the content sits on the Y axis.
 ///
-@function align($align) {
+@function align($args) {
   $props: ();
 
-  @if $align == 'center' {
-    $props: (
-      position: absolute,
-      top: 50%,
-      left: 50%,
-      transform: translate(-50%, -50%)
-    );
+  @each $arg in $args {
+    $i: index($args, $arg);
+
+    @if length($args) == 1 and $arg == center {
+      $props: map-merge($props, (
+        position: absolute,
+        top: 50%,
+        left: 50%,
+        transform: translate(-50%, -50%),
+      ));
+    }
+    @elseif length($args) >=2 {
+      @if $i <= 2 {
+        // X Axis
+        @if $arg == 'center' {
+          $props: (
+            position: absolute,
+            left: 50%,
+            transform: translateX(-50%),
+          );
+        }
+        @else {
+          @if type-of(nth($args, $i + 1)) == number {
+            $props: map-merge($props, (
+              position: absolute,
+              #{$arg}: nth($args, $i + 1)
+            ));
+          }
+        }
+      }
+      @elseif $i >= 2 {
+        // Y Axis
+        @if $arg == 'center' {
+          $props: (
+            position: absolute,
+            top: 50%,
+            transform: translateY(-50%),
+          );
+        }
+      }
+    }
   }
 
-  @if $align == 'center-x' {
-    $props: (
-      position: absolute,
-      left: 50%,
-      transform: translateX(-50%)
-    );
-  }
-
-  @if $align == 'center-y' {
-    $props: (
-      position: absolute,
-      top: 50%,
-      transform: translateY(-50%)
-    );
-  }
-
+  @debug $props;
   @return $props;
 }

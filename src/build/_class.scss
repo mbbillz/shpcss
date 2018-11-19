@@ -13,44 +13,51 @@
 /// @param {String} $shape
 /// The desired shape of the element
 ///
-/// @param {Object} $base
-/// The base properties of the element
-///
 /// @param {Object} $variants
 /// Swatch variants
 ///
 /// @param {Object} $pseudo
 /// An object containing pseudo element properties
 ///
+/// @param {Object} $args
+/// The rest of the arguments passed as a list
+///
 @mixin class(
   $selector,
   $shape,
-  $reset: null,
-  $base: null,
   $variants: null,
-  $pseudo: null
+  $pseudo: null,
+  $args...,
 ) {
+  $base_props: shape-type($shape, false, $args...);
 
   #{$selector} {
-    @if $base {
-      $args: $base;
-      @include shape-type($shape, false, $reset, $args...);
-    }
-    @else {
-      @include shape-type($shape, false, $reset, null);
-    }
-
-    @if $pseudo {
-      @include pseudo($pseudo...);
-    }
-
+    @include apply-props($base_props);
+    @include interactive($swatch, $custom);
+    @include pseudo($pseudo);
+    
     @if $variants {
       @each $var in $variants {
-        $variant: nth($var, 1);
-        $args: nth($var, 2);
-        
-        &#{$variant} {
-          @include shape-type($shape, true, $reset, $args...);  
+        $final: ();
+        $var_selector: nth($var, 1);
+        $var_args: nth($var, 2);
+        $var_shape: if(map-get($var_args, 'shape'), map-get($var_args, 'shape'), $shape);
+        $var_pseudo: map-get($var_args, 'pseudo');
+        $var_props: shape-type($var_shape, true, $var_args...);
+
+        @each $key in $var_props {
+          $old: map-get($base_props, nth($key, 1));
+          $new: map-get($var_props, nth($key, 1));
+          
+          @if $old != $new {
+            $final: map-merge($final, (nth($key, 1): nth($key, 2)));
+          }
+        }
+
+        &#{$var_selector} {
+          @include apply-props($final);
+          @include interactive(map-get($var_args, 'swatch'), map-get($var_args, 'custom'));
+          @include pseudo($pseudo);
         }  
       }
     }

@@ -12,10 +12,11 @@
 /// Will be overidden by swatch or custom styles
 ///
 $default: (
+  display: block,
   position: relative,
   background: none,
   border: none,
-  box-sizing: border-box
+  box-sizing: border-box,
 );
 
 ///
