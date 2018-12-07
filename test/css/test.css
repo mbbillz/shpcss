@@ -1,76 +1,139 @@
-body, html {
+body {
+  display: block;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif; }
+  background-color: #F8F8F8;
+}
 
-.swatch {
+p, button, a, h1, h2, h3 {
+  font-family: sans-serif;
+}
+
+.block {
+  display: block;
   position: relative;
   background: none;
   border: none;
   box-sizing: border-box;
-  width: 3.125rem;
-  height: 3.125rem; }
-  .swatch--a {
-    background: radial-gradient(ellipse at center, #101010 0%, #000 100%);
-    color: #fff; }
-  .swatch--c {
-    color: #fff; }
-  .swatch--d {
-    color: #2e14c4; }
-    .swatch--d:hover {
-      cursor: pointer;
-      outline: none;
-      color: #1e0d7f; }
-  .swatch--e {
-    background-color: #101010;
-    color: #777; }
-    .swatch--e:hover {
-      cursor: pointer;
-      outline: none;
-      color: #fff; }
-  .swatch--f {
-    background-color: #e60000;
-    color: #fff; }
-    .swatch--f:hover {
-      cursor: pointer;
-      outline: none;
-      background-color: #ff0000; }
-  .swatch--g {
-    background-color: #2912ad;
-    color: #fff; }
-    .swatch--g:hover {
-      cursor: pointer;
-      outline: none;
-      background-color: #2e14c4; }
+  height: 4rem;
+  width: 3rem;
+  background-color: #e60000;
+  color: #fff;
+}
 
-.btn {
+.block {
+  display: block;
   position: relative;
   background: none;
   border: none;
   box-sizing: border-box;
-  width: auto;
-  padding: 1rem 1.5rem; }
-  .btn--a {
-    background-color: #e60000;
-    color: #fff; }
-    .btn--a:hover {
-      cursor: pointer;
-      outline: none;
-      background-color: #ff0000; }
-  .btn--b {
-    background-color: #2912ad;
-    color: #fff; }
-    .btn--b:hover {
-      cursor: pointer;
-      outline: none;
-      background-color: #2e14c4; }
-  .btn--c {
-    border: solid 1px #2912ad;
-    color: #2e14c4; }
-    .btn--c:hover {
-      cursor: pointer;
-      outline: none;
-      border-color: #2e14c4; }
+  height: 4rem;
+  width: 3rem;
+  background-color: #e60000;
+  color: #fff;
+}
+.block--a {
+  background-color: #2e14c4;
+}
+
+.block-override {
+  display: block;
+  position: relative;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  height: 4rem;
+  width: 3rem;
+  background-color: #e60000;
+  color: #fff;
+}
+.block-override--a {
+  width: 4rem;
+  background-color: pink;
+}
+.block-override--a::after {
+  content: "pseudo";
+}
+
+.square {
+  display: block;
+  position: relative;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  width: 5rem;
+  height: 5rem;
+  background-color: #2e14c4;
+  color: #fff;
+}
+
+.interactive {
+  display: block;
+  position: relative;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  background-color: #e60000;
+  color: #fff;
+}
+.interactive:hover {
+  cursor: pointer;
+  outline: none;
+  color: #444;
+}
+
+.pseudo-before {
+  display: block;
+  position: relative;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  height: 5rem;
+  width: 10rem;
+  background-color: #e60000;
+  color: #fff;
+}
+.pseudo-before::before {
+  content: "before";
+}
+
+.pseudo-after {
+  display: block;
+  position: relative;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  height: 5rem;
+  width: 10rem;
+  background-color: #e60000;
+  color: #fff;
+}
+.pseudo-after::after {
+  content: "after";
+}
+
+.pseudo-override {
+  display: block;
+  position: relative;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  height: 5rem;
+  width: 10rem;
+  background-color: #e60000;
+  color: #fff;
+}
+.pseudo-override::after {
+  content: "after";
+}
+.pseudo-override--a::after {
+  content: "override";
+  display: block;
+  position: relative;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+}
 
 /*# sourceMappingURL=test.css.map */

@@ -5,7 +5,7 @@
 /// ----------------------------------------------------------------------
 
 ///
-/// Apply the correct shape mixin
+/// Create an object with correct CSS properties for the shape arg
 ///
 /// @param {Object} $shape
 /// The desired element shape
@@ -31,17 +31,20 @@
   @if $shape == 'square' {
     $props: square($size);
   }
-  @elseif $shape == 'block' {
+  @else if $shape == 'block' {
     $props: block($width, $height);
   }
 
-  @debug $align;
   // Alignment
   $props: map-merge($props, reset($reset));
   $props: map-merge($props, align($align));
   $props: map-merge($props, children($children));
 
-  $final: props($props, $swatch, $custom);
+  $final: (
+    'props': props($props, $swatch, $custom),
+    'swatch': $swatch,
+    'custom': $custom,
+  );
 
   @return $final;
 }

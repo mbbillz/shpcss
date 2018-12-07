@@ -16,6 +16,8 @@
 @function reset($reset) {
   $props: ();
 
+  // @ToDo - turn into object and use bracket notation
+  
   @if $reset == 'list' {
     $props: (
       list-style: none,
@@ -24,7 +26,7 @@
     )
   }
 
-  @elseif $reset == 'body' {
+  @else if $reset == 'body' {
     $props: (
       position: null,
       background: null,
@@ -34,7 +36,7 @@
     )
   }
 
-  @elseif $reset == 'button' {
+  @else if $reset == 'button' {
     $props: (
       background: none,
       border: none

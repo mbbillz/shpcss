@@ -24,12 +24,16 @@
 ///
 @mixin class(
   $selector,
-  $shape,
+  $shape: null,
   $variants: null,
   $pseudo: null,
-  $args...,
+  $args...
 ) {
-  $base_props: shape-type($shape, false, $args...);
+  $base_obj: shape-type($shape, false, $args...);
+  $base_props: map-get($base_obj, 'props');
+  
+  $swatch: map-get($base_obj, 'swatch');
+  $custom: map-get($base_obj, 'custom');
 
   #{$selector} {
     @include apply-props($base_props);
@@ -43,7 +47,8 @@
         $var_args: nth($var, 2);
         $var_shape: if(map-get($var_args, 'shape'), map-get($var_args, 'shape'), $shape);
         $var_pseudo: map-get($var_args, 'pseudo');
-        $var_props: shape-type($var_shape, true, $var_args...);
+        $var_obj: shape-type($var_args..., $variant: true);
+        $var_props: map-get($var_obj, 'props');
 
         @each $key in $var_props {
           $old: map-get($base_props, nth($key, 1));
@@ -57,7 +62,7 @@
         &#{$var_selector} {
           @include apply-props($final);
           @include interactive(map-get($var_args, 'swatch'), map-get($var_args, 'custom'));
-          @include pseudo($pseudo);
+          @include pseudo($var_pseudo);
         }  
       }
     }

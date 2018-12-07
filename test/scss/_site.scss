@@ -1,84 +1,160 @@
 /// ----------------------------------------------------------------------
 
-/// Site
+/// Site Tests - ToDo automate class creation
 
 /// ----------------------------------------------------------------------
 
 /// -------------------
-/// Body
+/// Single Selector with body reset & custom style
 /// -------------------
 
 @include class(
-  $selector: 'body, html',
+  $selector: 'body',
   $shape: 'block',
   $reset: 'body',
-  $base: (
-    'custom': (
-      font-family: sans-serif
-    )
+  $custom: (
+    background-color: #F8F8F8
   )
 );
 
 /// -------------------
-/// Swatches
+/// Multiple Selectors, no shape
 /// -------------------
 
 @include class(
-  $selector: '.swatch',
-  $shape: 'square',
-  $base: (
-    'size': rem(50px)
-  ),
-  $variants: (
-    '--a': (
-      'swatch': map-get($swatches, 'ui-a')
-    ),
-    '--b': (
-      'swatch': map-get($swatches, 'ui-b')
-    ),
-    '--c': (
-      'swatch': map-get($swatches, 'type-b')
-    ),
-    '--d': (
-      'swatch': map-get($swatches, 'link-a')
-    ),
-    '--e': (
-      'swatch': map-get($swatches, 'link-b')
-    ),
-    '--f': (
-      'swatch': map-get($swatches, 'btn-a')
-    ),
-    '--g': (
-      'swatch': map-get($swatches, 'btn-b')
-    )
+  $selector: 'p, button, a, h1, h2, h3',
+  $custom: (
+    font-family: sans-serif
   )
 );
 
 /// -------------------
-/// Buttons
+/// Block
 /// -------------------
 
 @include class(
-  $selector: '.btn',
+  $selector: '.block',
   $shape: 'block',
-  $base: (
-    'width': auto,
-    'custom': (
-      padding: 1rem 1.5rem
+  $width: 3rem,
+  $height: 4rem,
+  $swatch: map-get($swatches, 'block')
+);
+
+/// -------------------
+/// Block with variants
+/// -------------------
+
+@include class(
+  $selector: '.block',
+  $shape: 'block',
+  $width: 3rem,
+  $height: 4rem,
+  $swatch: map-get($swatches, 'block'),
+  $variants: (
+    '--a': (
+      'swatch': map-get($swatches, 'block-variant')
     )
+  )
+);
+
+/// -------------------
+/// Block with variant overrides
+/// -------------------
+
+@include class(
+  $selector: '.block-override',
+  $shape: 'block',
+  $width: 3rem,
+  $height: 4rem,
+  $swatch: map-get($swatches, 'block'),
+  $variants: (
+    '--a': (
+      'swatch': map-get($swatches, 'block-variant'),
+      'shape': 'square',
+      'size': 4rem,
+      'pseudo': (
+        'content': 'pseudo',
+      ),
+      'custom': (
+        'background-color': pink
+      )
+    )
+  )
+);
+
+/// -------------------
+/// Square
+/// -------------------
+
+@include class(
+  $selector: '.square',
+  $shape: 'square',
+  $size: 5rem,
+  $swatch: map-get($swatches, 'square')
+);
+
+/// -------------------
+/// Interactive
+/// -------------------
+
+@include class(
+  $selector: '.interactive',
+  $shape: 'block',
+  $size: 5rem,
+  $swatch: map-get($swatches, 'interactive')
+);
+
+/// -------------------
+/// Psuedo before
+/// -------------------
+
+@include class(
+  $selector: '.pseudo-before',
+  $shape: 'block',
+  $width: 10rem,
+  $height: 5rem,
+  $swatch: map-get($swatches, 'block'),
+  $pseudo: (
+    'content': 'before',
+    'location': 'before'
+  )
+);
+
+/// -------------------
+/// Psuedo after
+/// -------------------
+
+@include class(
+  $selector: '.pseudo-after',
+  $shape: 'block',
+  $width: 10rem,
+  $height: 5rem,
+  $swatch: map-get($swatches, 'block'),
+  $pseudo: (
+    'content': 'after',
+  )
+);
+
+
+/// -------------------
+/// Psuedo override
+/// -------------------
+
+@include class(
+  $selector: '.pseudo-override',
+  $shape: 'block',
+  $width: 10rem,
+  $height: 5rem,
+  $swatch: map-get($swatches, 'block'),
+  $pseudo: (
+    'content': 'after',
   ),
   $variants: (
     '--a': (
-      'interactive': true,
-      'swatch': map-get($swatches, 'btn-a')
-    ),
-    '--b': (
-      'interactive': true,
-      'swatch': map-get($swatches, 'btn-b')
-    ),
-    '--c': (
-      'interactive': true,
-      'swatch': map-get($swatches, 'btn-c')
+      'pseudo': (
+        'content': 'override',
+        'shape': 'square'
+      )
     )
   )
 );

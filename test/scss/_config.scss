@@ -1,10 +1,12 @@
 /// ----------------------------------------------------------------------
 
-/// Swatches
+/// Config maps
 
 /// ----------------------------------------------------------------------
 
-$base-font-size: 16px;
+/// -------------------
+/// Colours
+/// -------------------
 
 $primary:   #ff0000;
 $secondary: #2e14c4;
@@ -14,49 +16,74 @@ $ui-c:      #444;
 $ui-d:      #101010;
 $ui-e:      #000;
 
+/// -------------------
+/// Spacing
+/// -------------------
+
+$spacing: (
+  'sm': .75rem, // 12px
+  'md': 1rem, // 16px
+  'lg': 2rem // 48px
+);
+
+/// -------------------
+/// Swatches
+/// -------------------
+
 $swatches: (
-  'ui-a': (
-    background: radial-gradient(ellipse at center, $ui-d 0%, $ui-e 100%),
-    color: $ui-a
-  ),
-  'type-a': (
-    color: $ui-b
-  ),
-  'type-b': (
-    color: $ui-a
-  ),
-  'link-a': (
-    color: $secondary,
-    'hover': (
-      color: darken($secondary, 15%)
-    )
-  ),
-  'link-b': (
-    background-color: $ui-d,
-    color: $ui-b,
-    'hover': (
-      color: $ui-a
-    )
-  ),
-  'btn-a': (
+  'block': (
     background-color: darken($primary, 5%),
     color: $ui-a,
-    'hover': (
-      background-color: $primary
-    )
   ),
-  'btn-b': (
-    background-color: darken($secondary, 5%),
+  'square': (
+    background-color: $secondary,
     color: $ui-a,
+  ),
+  'interactive': (
+    background-color: darken($primary, 5%),
+    color: $ui-a,
+
     'hover': (
-      background-color: $secondary
+      color: $ui-c
     )
   ),
-  'btn-c': (
-    border: solid 1px darken($secondary, 5%),
-    color: $secondary,
-    'hover': (
-      border-color: $secondary
-    )
+  'block-variant': (
+    background-color: $secondary,
+    color: $ui-a,
   )
+);
+
+/// -------------------
+/// Type
+/// -------------------
+
+$base-font-size:    16px;
+$font-family:       'Helvetica', sans-serif;
+$font-family--alt:  'Helvetica', sans-serif;
+
+$font-bold:         700;
+$font-regular:      500;
+$font-light:        300;
+
+$type: (
+  'h1': (
+    font-size: 3rem, // 48px
+    font-family: $font-family--alt,
+    font-weight: $font-bold,
+  ),
+  'h2': (
+    font-size: 2rem, // 28px
+    font-family: $font-family--alt,
+    font-weight: $font-bold,
+  ),
+  'h3': (
+    font-size: 1.5rem, //24px
+    font-family: $font-family--alt,
+    font-weight: $font-bold,
+  ),
+  'p': (
+    font-size: 0.75rem, // 14px
+    font-family: $font-family,
+    font-weight: $font-regular,
+  ),
 );
