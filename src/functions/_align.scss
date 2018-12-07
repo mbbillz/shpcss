@@ -19,7 +19,16 @@
   @each $arg in $args {
     $i: index($args, $arg);
 
-    @if length($args) == 1 and $arg == center {
+    @if length($args) == 1 and $arg == fill {
+      $props: map-merge($props, (
+        position: absolute,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      ));
+    }
+    @else if length($args) == 1 and $arg == center {
       $props: map-merge($props, (
         position: absolute,
         top: 50%,
