@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "open test/index.html && ./node_modules/sass/sass.js test/scss/test.scss test/css/test.css --watch",
+    "build": "./node_modules/sass/sass.js test/scss/test.scss test/css/test.css"
   },
   "repository": {
     "type": "git",
@@ -33,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/mbbillz/shpcss/issues"
   },
-  "homepage": "https://github.com/mbbillz/shpcss#readme"
+  "homepage": "https://github.com/mbbillz/shpcss#readme",
+  "devDependencies": {
+    "sass": "^1.15.2"
+  }
 }

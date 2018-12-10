@@ -5,7 +5,7 @@
 /// ----------------------------------------------------------------------
 
 ///
-/// Output the right padding for the element's height and content offset
+/// Apply a CSS reset to an element
 ///
 /// @param {Number} $height
 /// The height
@@ -16,30 +16,25 @@
 @function reset($reset) {
   $props: ();
 
-  @if $reset == 'list' {
+  @if $reset {
     $props: (
-      list-style: none,
-      margin: 0,
-      padding: 0
-    )
-  }
+      'list': (
+        list-style: none,
+        margin: 0,
+        padding: 0
+      ),
+      'spacing': (
+        margin: 0,
+        padding: 0
+      ),
+      'style': (
+        background: none,
+        border: none
+      )
+    );
 
-  @elseif $reset == 'body' {
-    $props: (
-      position: null,
-      background: null,
-      border: null,
-      margin: 0,
-      padding: 0
-    )
+    $props: map-merge(map-get($props, $reset), $props);
   }
-
-  @elseif $reset == 'button' {
-    $props: (
-      background: none,
-      border: none
-    )
-  }
-
+  
   @return $props;
-}
+};

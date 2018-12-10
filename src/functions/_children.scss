@@ -5,7 +5,7 @@
 /// ----------------------------------------------------------------------
 
 ///
-/// Output the right padding for the element's height and content offset
+/// Align the children of an element using flexbox
 ///
 /// @param {Number} $height
 /// The height
@@ -24,21 +24,21 @@
     );
   }
     
-  @elseif $children == 'center-x' {
+  @else if $children == 'center-x' {
     $props: (
       display: flex,
       justify-content: center,
     );
   }
 
-  @elseif $children == 'center-y' {
+  @else if $children == 'center-y' {
     $props: (
       display: flex,
       align-items: center,
     );
   }
 
-  @elseif $children {
+  @else if $children {
     $props: (
       display: flex,
       justify-content: $children,

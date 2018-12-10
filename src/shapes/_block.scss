@@ -12,10 +12,11 @@
 /// Will be overidden by swatch or custom styles
 ///
 $default: (
+  display: block,
   position: relative,
   background: none,
   border: none,
-  box-sizing: border-box
+  box-sizing: border-box,
 );
 
 ///
@@ -34,13 +35,27 @@ $default: (
 /// Whether to generate states for the element (hover, active etc)
 ///
 @function block(
+  $inline: false,
   $width: null,
-  $height: null
+  $height: null,
+  $height-to-pad: null,
 ) {
 
   $block: map-merge($default, ());
+  $block: if($inline == true, map-merge($block, (display: inline-block)), $block);
   $block: if($height, map-merge($block, (height: $height)), $block);
   $block: if($width, map-merge($block, (width: $width)), $block);
-  
+
+  @if $height-to-pad {
+    $padding: height-to-pad($height-to-pad...);
+
+    $vals: (
+      padding-top: get-prop($padding, 'top'),
+      padding-bottom: get-prop($padding, 'bottom'),
+    );
+
+    $block: map-merge($block, $vals);
+  }
+
   @return $block;
 }
