@@ -5,7 +5,7 @@
 /// ----------------------------------------------------------------------
 
 ///
-/// Apply the correct shape mixin
+/// Create an object with correct CSS properties for the shape arg
 ///
 /// @param {Object} $shape
 /// The desired element shape
@@ -13,34 +13,40 @@
 /// @param {Object} $args
 /// The arguments passed from the 
 ///
-@mixin shape-type(
-  $shape,
-  $variant,
+@function shape-type(
+  $shape: null,
+  $variant: null,
   $reset: null,
   $swatch: null,
   $align: null,
   $children: null,
-  $interactive: false,
+  $inline: false,
   $size: null,
   $width: null,
   $height: null,
-  $custom: null
+  $height-to-pad: null,
+  $pseudo: null,
+  $custom: null,
 ) {
   $props: ();
 
   @if $shape == 'square' {
-    $props: square($size);
+    $props: square($inline, $size);
   }
-  @elseif $shape == 'block' {
-    $props: block($width, $height);
+  @else if $shape == 'block' {
+    $props: block($inline, $width, $height, $height-to-pad);
   }
 
+  // Alignment
   $props: map-merge($props, reset($reset));
   $props: map-merge($props, align($align));
   $props: map-merge($props, children($children));
-  
-  @if $interactive {
-    @include interactive($swatch);
-  }
-  @include apply-props(props($props, $swatch, $custom, $variant));
+
+  $final: (
+    'props': props($props, $swatch, $custom),
+    'swatch': $swatch,
+    'custom': $custom,
+  );
+
+  @return $final;
 }

@@ -19,22 +19,35 @@ $interactive: (
 ///
 /// Generate style states if the element is defined as interactive
 ///
-/// @param {Object} $states
-/// The map containing the different states (:hover, :active etc)
-///
 /// @param {Object} $swatch
-/// The swatch map containing style properties
+/// The map containing the current swatch
+///
+/// @param {Object} $custom
+/// The swatch map containing any custom styles
 ///
 @mixin interactive(
-  $states
+  $swatch,
+  $custom,
 ) {
-  @each $state in $states {
-    $name: nth($state, 1);
-    $map: nth($state, 2);
 
-    @if type-of($map) == 'map' {
-      &:#{$name} {
-        @include apply-props(props($interactive, $map));
+  $current: map-merge(if($swatch, $swatch, ()), if($custom, $custom, ()));
+  $states: if($current, $current, $swatch);
+
+  @each $item in $current {
+    @if (type-of(nth($item, 2)) == 'map') {
+      $interactive: true;
+    }
+  }
+
+  @if $interactive {
+    @each $state in $states {
+      $name: nth($state, 1);
+      $map: nth($state, 2);
+  
+      @if type-of($map) == 'map' {
+        &:#{$name} {
+          @include apply-props(props($interactive, $map));
+        }
       }
     }
   }

@@ -7,26 +7,23 @@
 ///
 /// Generate pseudo ::before or ::after element
 ///
-/// @param {Object} $pseudo
+/// @param {Object} $args
 /// The map containing the different states (:hover, :active etc)
 ///
-/// @param {Object} $shape
-/// The desired element shape
-///
-/// @param {Object} $swatch
-/// The swatch map containing style properties
-///
-/// @param {String} $content
-/// CSS content property
-///
 @mixin pseudo(
-  $pseudo: 'after',
-  $shape: null,
-  $swatch: null,
-  $content: ''
+  $args
 ) {
-  &::#{$pseudo} {
-    content: $content;
-    display: block;
+  @if $args {
+    $location: map-get($args, 'location');
+    $content: map-get($args, 'content');
+    $args: map-remove($args, 'content', 'location');
+
+    $props_obj: shape-type($args..., $variant: false);
+    $props: map-get($props_obj, 'props');
+
+    &::#{if($location, $location, 'after')} {
+      content: if($content, $content, '');
+      @include apply-props($props);
+    }
   }
 }

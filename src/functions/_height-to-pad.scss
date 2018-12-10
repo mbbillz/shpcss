@@ -4,6 +4,12 @@
 
 /// ----------------------------------------------------------------------
 
+// Change values to REM if provided in PX
+@function fixUnit($in, $out) {
+  $fixed: if(str-index($string: #{$in}, $substring: 'px'), rem($in), $in);
+  @return $fixed;
+};
+
 ///
 /// Set an element's height using padding instead of fixed height. Also converts px to rem.
 /// For example, to make a button with height of 30px:
@@ -23,31 +29,29 @@
 /// @param {Number} $x
 /// The height in px
 ///
-/// @param {Number} $font-size
-/// The font-size of the element defaults to base font size
+/// @param {Number} $border-width
+/// The border width, if any
+///
+/// @param {Number} $line-height
+/// The line-height of the element defaults to base font size
 ///
 /// @param {Number} $offset-y
 /// The vertical positioning of the text - a number from 0 to 1
 ///
-/// @return {Number||Object}
+/// @return {Object}
 /// Either a value in REMs (using px to rem)
 ///
-@function height-to-pad($x, $font-size, $offset-y: .5) {
-
-  $font-size: if($font-size, $font-size, 1rem);
-  $font-size: if(str-index($string: #{$font-size}, $substring: 'px'), rem($font-size), $font-size);
-  $x: if(str-index($string: #{$x}, $substring: 'px'), rem($x), $x);
-
-  $z: $font-size;
-  $y1: ($x - $z) * $offset-y;
-  $y2: ($x - $z) * (1 - $offset-y);
+@function height-to-pad($x, $border-width: 0, $line-height: 1, $offset-y: .5) {
+  $x: rem($x);
+  $border-width: rem($border-width);
+  $line-height: rem($line-height);
   
+  $total-pad: $x - ($border-width * 2);
 
-  @if ($y1 == $y2) {
-    @return $y1;
-  }
-  @else {
-    $values: ('top': $y1, 'bottom': $y2, 'font-size': $font-size);
-    @return $values;
-  }
+  $y1: ($total-pad / 2) - ($line-height * $offset-y);
+  $y2: ($total-pad / 2) - ($line-height * (1 - $offset-y));
+
+  $values: ('top': $y1, 'bottom': $y2);
+
+  @return $values;
 }
