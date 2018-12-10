@@ -10,8 +10,7 @@
 
 @include class(
   $selector: 'body',
-  $shape: 'block',
-  $reset: 'body',
+  $reset: 'spacing',
   $custom: (
     background-color: #F8F8F8
   )

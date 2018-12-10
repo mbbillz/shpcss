@@ -17,6 +17,14 @@
 /// The pixel value converted to REM
 ///
 @function rem($px, $base-font-size: 16) {
-  $rem: strip-unit($px) / $base-font-size;
-  @return $rem * 1rem;
+  $rem: $px;
+
+  @if (str-index($string: #{$px}, $substring: 'px')) {
+    $rem: (strip-unit($px) / $base-font-size) * 1rem;
+  }
+  @else if (unitless($rem)) {
+    $rem: $rem * 1rem;
+  }
+
+  @return $rem;
 }

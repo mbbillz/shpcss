@@ -20,19 +20,21 @@
   $swatch: null,
   $align: null,
   $children: null,
+  $inline: false,
   $size: null,
   $width: null,
   $height: null,
+  $height-to-pad: null,
   $pseudo: null,
   $custom: null,
 ) {
   $props: ();
 
   @if $shape == 'square' {
-    $props: square($size);
+    $props: square($inline, $size);
   }
   @else if $shape == 'block' {
-    $props: block($width, $height);
+    $props: block($inline, $width, $height, $height-to-pad);
   }
 
   // Alignment

@@ -16,32 +16,25 @@
 @function reset($reset) {
   $props: ();
 
-  // @ToDo - turn into object and use bracket notation
+  @if $reset {
+    $props: (
+      'list': (
+        list-style: none,
+        margin: 0,
+        padding: 0
+      ),
+      'spacing': (
+        margin: 0,
+        padding: 0
+      ),
+      'style': (
+        background: none,
+        border: none
+      )
+    );
+
+    $props: map-merge(map-get($props, $reset), $props);
+  }
   
-  @if $reset == 'list' {
-    $props: (
-      list-style: none,
-      margin: 0,
-      padding: 0
-    )
-  }
-
-  @else if $reset == 'body' {
-    $props: (
-      position: null,
-      background: null,
-      border: null,
-      margin: 0,
-      padding: 0
-    )
-  }
-
-  @else if $reset == 'button' {
-    $props: (
-      background: none,
-      border: none
-    )
-  }
-
   @return $props;
-}
+};

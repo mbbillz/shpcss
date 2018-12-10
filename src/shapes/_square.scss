@@ -22,9 +22,11 @@ $default: (
 /// The width and height
 ///
 @function square(
+  $inline: false,
   $size: null
 ) {
   
+  $square: if($inline == true, map-merge($square, (display: inline-block)), $default);
   $square: if($size, map-merge($default, (width: $size, height: $size)), $default);
 
   @return $square;
