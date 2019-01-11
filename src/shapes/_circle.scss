@@ -30,7 +30,6 @@ $circle: (
   $size: null
 ) {
   
-  @debug $circle;
   $circle: if($inline == true, map-merge($circle, (display: inline-block)), $circle);
   $circle: if($size, map-merge($circle, (width: $size, height: $size)), $circle);
   
