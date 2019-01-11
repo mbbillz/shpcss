@@ -13,37 +13,37 @@
 /// @param {Number} $offsetY
 /// Where the content sits on the Y axis.
 ///
-@function children($children) {
-  $props: ();
+@function children($args) {
+  $children: ();
 
-  @if $children == 'center' {
-    $props: (
+  @if $args == 'center' {
+    $children: (
       display: flex,
       justify-content: center,
       align-items: center
     );
   }
     
-  @else if $children == 'center-x' {
-    $props: (
+  @else if $args == 'center-x' {
+    $children: (
       display: flex,
       justify-content: center,
     );
   }
 
-  @else if $children == 'center-y' {
-    $props: (
+  @else if $args == 'center-y' {
+    $children: (
       display: flex,
       align-items: center,
     );
   }
 
-  @else if $children {
-    $props: (
+  @else if $args {
+    $children: (
       display: flex,
-      justify-content: $children,
+      justify-content: $args,
     );
   }
 
-  @return $props;
+  @return $children;
 }

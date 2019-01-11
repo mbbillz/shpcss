@@ -1,36 +1,38 @@
 /// ----------------------------------------------------------------------
 
-/// Square
+/// Circle
 
 /// ----------------------------------------------------------------------
 
 /// -------------------
-/// Default square properties
+/// Default circle properties
 /// -------------------
 ///
-/// Contains the default properties for a square
+/// Contains the default properties for a circle
 /// Will be overidden by swatch or custom styles
 ///
-$square: (
+$circle: (
   display: block,
   position: relative,
   padding-left: 0,
   padding-right: 0,
+  border-radius: 9999px
 );
 
 ///
-/// Generate a square
+/// Generate a circle
 ///
 /// @param {Number} $size
 /// The width and height
 ///
-@function square(
+@function circle(
   $inline: false,
   $size: null
 ) {
   
-  $square: if($inline == true, map-merge($square, (display: inline-block)), $square);
-  $square: if($size, map-merge($square, (width: $size, height: $size)), $square);
-
-  @return $square;
+  @debug $circle;
+  $circle: if($inline == true, map-merge($circle, (display: inline-block)), $circle);
+  $circle: if($size, map-merge($circle, (width: $size, height: $size)), $circle);
+  
+  @return $circle;
 }

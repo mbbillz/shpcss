@@ -33,6 +33,9 @@
   @if $shape == 'square' {
     $props: square($inline, $size);
   }
+  @else if $shape == 'circle' {
+    $props: circle($inline, $size);
+  }
   @else if $shape == 'block' {
     $props: block($inline, $width, $height, $height-to-pad);
   }

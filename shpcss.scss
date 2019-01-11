@@ -1,8 +1,11 @@
 
-
+// Shapes
 @import 'src/shapes/square';
+@import 'src/shapes/circle';
 @import 'src/shapes/block';
 
+// Utilities
+@import 'src/functions/merge';
 @import 'src/functions/reset';
 @import 'src/functions/align';
 @import 'src/functions/children';
@@ -13,6 +16,7 @@
 
 @import 'src/utilities/height';
 
+// Build
 @import 'src/build/pseudo';
 @import 'src/build/shape-type';
 @import 'src/build/apply-props';

@@ -11,11 +11,9 @@
 /// Contains the default properties for a standard block
 /// Will be overidden by swatch or custom styles
 ///
-$default: (
+$block: (
   display: block,
   position: relative,
-  background: none,
-  border: none,
   box-sizing: border-box,
 );
 
@@ -41,7 +39,6 @@ $default: (
   $height-to-pad: null,
 ) {
 
-  $block: map-merge($default, ());
   $block: if($inline == true, map-merge($block, (display: inline-block)), $block);
   $block: if($height, map-merge($block, (height: $height)), $block);
   $block: if($width, map-merge($block, (width: $width)), $block);

@@ -1,0 +1,23 @@
+/// ----------------------------------------------------------------------
+
+/// Multiple map merge
+
+/// ----------------------------------------------------------------------
+
+///
+/// Merge multiple maps
+///
+/// @param {String} $maps
+/// The original value with unit
+///
+/// @return {Object} 
+/// The merged maps
+///
+@function merge($maps...) {
+  $collection: ();
+
+  @each $map in $maps {
+    $collection: map-merge($collection, $map);
+  }
+  @return $collection;
+}

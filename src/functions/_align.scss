@@ -14,13 +14,13 @@
 /// Where the content sits on the Y axis.
 ///
 @function align($args) {
-  $props: ();
+  $align: ();
 
   @each $arg in $args {
     $i: index($args, $arg);
 
     @if length($args) == 1 and $arg == fill {
-      $props: map-merge($props, (
+      $align: map-merge($align, (
         position: absolute,
         top: 0,
         left: 0,
@@ -29,44 +29,60 @@
       ));
     }
     @else if length($args) == 1 and $arg == center {
-      $props: map-merge($props, (
+      $align: map-merge($align, (
         position: absolute,
         top: 50%,
         left: 50%,
         transform: translate(-50%, -50%),
       ));
     }
-    @else if length($args) >=2 {
-      @if $i <= 2 {
-        // X Axis
+    @else if length($args) == 2 {
+      // X Axis
+      @if $i == 1 {
         @if $arg == 'center' {
-          $props: (
+          $align: map-merge($align, (
             position: absolute,
             left: 50%,
             transform: translateX(-50%),
-          );
+          ));
         }
-        @else {
-          @if type-of(nth($args, $i + 1)) == number {
-            $props: map-merge($props, (
-              position: absolute,
-              #{$arg}: nth($args, $i + 1)
-            ));
-          }
+        @else if type-of($arg) == number {
+          $align: map-merge($align, (
+            position: absolute,
+            left: $arg
+          ));
+        }
+        @else if $arg != '' {
+          $align: map-merge($align, (
+            position: absolute,
+            #{$arg}: 0
+          ));
         }
       }
-      @else if $i >= 2 {
-        // Y Axis
+      // Y Axis
+      @if $i == 2 {
         @if $arg == 'center' {
-          $props: (
+          $align: map-merge($align, (
             position: absolute,
             top: 50%,
             transform: translateY(-50%),
-          );
+          ));
+        }
+        @else if type-of($arg) == number {
+          $align: map-merge($align, (
+            position: absolute,
+            #{$arg}: nth($args, $i + 1)
+          ));
+        }
+        @else if $arg != '' {
+          $align: map-merge($align, (
+            position: absolute,
+            #{$arg}: 0,
+          ));
         }
       }
     }
   }
 
-  @return $props;
+  @return $align;
 }
