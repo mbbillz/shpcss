@@ -1,6 +1,6 @@
 {
   "name": "shpcss",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simpler way to write SCSS.",
   "main": "index.js",
   "directories": {
